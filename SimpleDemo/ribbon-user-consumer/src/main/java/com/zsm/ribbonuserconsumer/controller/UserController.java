@@ -22,7 +22,8 @@ public class UserController
     @GetMapping("/getUserInfo/{name}")
     public String getUserInfo(@PathVariable String name)
     {
-        String result = template.getForObject("http://ribbon-user-provider/getUserInfo/" + name, String.class);
+        String url = "http://ribbon-user-provider/getUserInfo/" + name;
+        String result = template.getForObject(url, String.class) + " ribbon";
         System.out.println(result);
         return result;
     }

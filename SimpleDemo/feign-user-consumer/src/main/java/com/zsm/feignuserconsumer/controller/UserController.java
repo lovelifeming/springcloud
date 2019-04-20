@@ -22,7 +22,7 @@ public class UserController
     @GetMapping("/getUserInfo/{name}")
     public String getUserInfo(@PathVariable String name)
     {
-        String result = userInterface.getUserInfo(name);
+        String result = userInterface.getUserInfo(name)+" feign";
         System.out.println(result);
         return result;
     }
