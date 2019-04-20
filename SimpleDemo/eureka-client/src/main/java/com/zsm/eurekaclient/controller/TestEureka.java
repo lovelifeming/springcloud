@@ -19,12 +19,12 @@ public class TestEureka
     @GetMapping("getUser")
     public String testGetUser(String name)
     {
-        return "获取测试通过:" + name;
+        return "eureka-client 获取测试通过:" + name;
     }
 
     @PostMapping("postUserId")
     public String testPostUser(String userId)
     {
-        return "获取用户Id：" + userId;
+        return "eureka-client 获取用户Id：" + userId;
     }
 }
