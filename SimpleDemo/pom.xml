@@ -11,7 +11,13 @@
     <name>SimpleDemo</name>
 
     <modules>
+        <module>feign-user-consumer</module>
+        <module>ribbon-user-consumer</module>
+        <module>ribbon-user-provider</module>
+        <module>zuul</module>
         <module>eureka-server</module>
+        <module>eureka-client</module>
+        <module>common</module>
     </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

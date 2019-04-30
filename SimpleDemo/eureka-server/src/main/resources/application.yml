@@ -1,3 +1,12 @@
+spring:
+  application:
+    name: eureka-server
+#eureka：默认心跳机制90s剔除无效服务。
+---
+spring:
+  profiles: activeProfile1
+server:
+  port: 8801
 eureka:
   instance:
     hostname: localhost
@@ -5,14 +14,35 @@ eureka:
     register-with-eureka: false
     fetch-registry: false
     serviceUrl:
-      defaultZone: http://127.0.0.1:8801/eureka/
-#    serviceUrl:
-#      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+      #      defaultZone: http://127.0.0.1:8801/eureka/
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
     instance:
-        statusPageUrlPath: ${server.servletPath}/info
-        healthCheckUrlPath: ${server.servletPath}/health
-server:
-  port: 8801
+      statusPageUrlPath: ${server.servletPath}/info
+      healthCheckUrlPath: ${server.servletPath}/health
+  server:
+    #开发环境或者测试环境关闭eureka自我保护机制
+    enable-self-preservation: false
+    eviction-interval-timer-in-ms: 2000
+---
 spring:
-  application:
-    name: eureka-server
+  profiles: activeProfile2
+server:
+  port: 8802
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    #防止注册到自己的服务中
+    register-with-eureka: false
+    fetch-registry: false
+    serviceUrl:
+      #      defaultZone: http://127.0.0.1:8802/eureka/
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+    instance:
+      statusPageUrlPath: ${server.servletPath}/info
+      healthCheckUrlPath: ${server.servletPath}/health
+  server:
+    ###开发环境或者测试环境关闭eureka自我保护机制
+    enable-self-preservation: false
+    eviction-interval-timer-in-ms: 2000
+

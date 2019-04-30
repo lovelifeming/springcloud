@@ -1,13 +1,17 @@
+server:
+  port: 8805
+spring:
+  application:
+    name: eureka-client
 eureka:
   instance:
     hostname: localhost
+    ###Eureka客户端向服务端发送心跳的时间间隔，单位为秒，
+    lease-renewal-interval-in-seconds: 1
+    ###Eureka服务端在收到最好一次心跳之后的等待时间，单位为秒，超过时间就删除服务
+    lease-expiration-duration-in-seconds: 3
   client:
     register-with-eureka: true
     fetch-registry: true
     service-url:
-      defaultZone: http://127.0.0.1:8801/eureka/
-server:
-  port: 8802
-spring:
-  application:
-    name: eureka-client
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/

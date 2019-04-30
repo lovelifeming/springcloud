@@ -7,7 +7,7 @@ eureka:
     serviceUrl:
       defaultZone: http://127.0.0.1:8801/eureka/
 server:
-  port: 8804
+  port: 8814
 spring:
   application:
     name: ribbon-user-consumer

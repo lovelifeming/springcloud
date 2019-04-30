@@ -18,7 +18,7 @@ public class Configure
 {
     @Bean
     @Autowired
-    @LoadBalanced
+    @LoadBalanced   //开启负载均衡功能，支持别名转发请求
     public RestTemplate restTemplate()
     {
         return new RestTemplate();
