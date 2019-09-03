@@ -1,0 +1,64 @@
+server:
+  port: 11223
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8801/eureka/
+    registry-fetch-interval-seconds: 5
+  instance:
+    lease-expiration-duration-in-seconds: 15
+    lease-renewal-interval-in-seconds: 5
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}:${random.int}
+
+
+spring:
+  application:
+    name: api-gateway
+#  cloud:
+#    config:
+#      discovery:
+#        enabled: true
+#        serviceId: config-server
+#      profile: ${profile:dev}
+#      failFast: true
+#      name: api-gateway,application-zipkin,application-logging,application-actuator
+
+swagger2:
+  enable: true
+
+swagger:
+  list:
+  - name: 用户服务
+    location: /user/v2/api-docs
+    swaggerVersion: 2.0
+  - name: 行为服务
+    location: /behavior/v2/api-docs
+    swaggerVersion: 2.0
+  - name: 仓储服务
+    location: /storage/v2/api-docs
+    swaggerVersion: 2.0
+  - name: 画像服务
+    location: /e-profile/v2/api-docs
+    swaggerVersion: 2.0
+  - name: 仓储产品画像服务
+    location: /p-profile/v2/api-docs
+    swaggerVersion: 2.0
+  - name: 风控系统
+    location: /r-control/v2/api-docs
+    swaggerVersion: 2.0
+  - name: 货品需求预测
+    location: /forecast/v2/api-docs
+    swaggerVersion: 2.0
+  - name: 一体化经营分析
+    location: /integration/v2/api-docs
+    swaggerVersion: 2.0
+  - name: 成都达海经营统计
+    location: /cddahaibusinessstat/v2/api-docs
+    swaggerVersion: 2.0
+  - name: 大数据平台首页
+    location: /home-page/v2/api-docs
+    swaggerVersion: 2.0
+  - name: 积微物联财务分析
+    location: /finance/v2/api-docs
+    swaggerVersion: 2.0
